@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="app_margin">16dp</dimen>
     <dimen name="card_margin">4dp</dimen>
     <dimen name="card_gallery_width">120dp</dimen>
+    <dimen name="progress_container">4dp</dimen>
+    <dimen name="progress_height">8dp</dimen>
 </resources>

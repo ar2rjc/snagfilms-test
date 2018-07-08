@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.snagapp.R;
@@ -16,10 +18,10 @@ import butterknife.ButterKnife;
 
 public class HomeActivity extends AppCompatActivity implements HomeContract.View {
 
-    private static final int COL_SPAN_COUNT = 2;
+    private static final int COL_SPAN_COUNT = 3;
 
-    @BindView(R.id.filmRecycler)
-    RecyclerView filmRecycler;
+    @BindView(R.id.filmRecycler) RecyclerView filmRecycler;
+    @BindView(R.id.progressBar) ProgressBar progressBar;
 
     private HomePresenter homePresenter;
     private FilmsAdapter filmsAdapter;
@@ -55,6 +57,11 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     @Override
     public void showError(String error) {
         Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showLoading(boolean isShowing) {
+        progressBar.setVisibility(isShowing ? View.VISIBLE : View.GONE);
     }
 
     private void initFilmsRecycler() {

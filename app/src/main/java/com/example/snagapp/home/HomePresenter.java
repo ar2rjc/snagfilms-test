@@ -21,22 +21,30 @@ public class HomePresenter implements HomeContract.Presenter {
 
     @Override
     public void getFilms() {
+        homeView.showLoading(true);
         snagService.getFilms(null, new SnagService.OnFilmsListener() {
             @Override
             public void onFilmsReady(List<Film> films) {
                 homeView.showFilms(films);
+                hideLoading();
             }
 
             @Override
             public void onFilmsError(String error) {
                 homeView.showError(error);
+                hideLoading();
             }
 
             @Override
             public void onNetworkError(String error) {
                 homeView.showError(error);
+                hideLoading();
             }
         });
+    }
+
+    private void hideLoading() {
+        homeView.showLoading(false);
     }
 
     @Override
