@@ -7,6 +7,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface SnagAPI {
+    String API_TYPE = "SnagFilmsAPI";
     String BASE_URL = "http://www.snagfilms.com/apis/";
 
     @GET("films.json")
