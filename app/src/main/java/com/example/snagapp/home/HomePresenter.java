@@ -5,12 +5,13 @@ import com.example.snagapp.data.to.Film;
 
 import java.util.List;
 
+// TODO - Generate a unit test for this presenter
 public class HomePresenter implements HomeContract.Presenter {
 
     private final SnagService snagService;
     private HomeContract.View homeView;
 
-    public HomePresenter() {
+    HomePresenter() {
         snagService = SnagService.getInstance();
     }
 
@@ -22,6 +23,7 @@ public class HomePresenter implements HomeContract.Presenter {
     @Override
     public void getFilms() {
         homeView.showLoading(true);
+        // TODO - Add a settings activity or offer user input for the count of films to get
         snagService.getFilms(null, new SnagService.OnFilmsListener() {
             @Override
             public void onFilmsReady(List<Film> films) {

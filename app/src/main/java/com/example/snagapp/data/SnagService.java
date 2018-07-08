@@ -24,7 +24,7 @@ public class SnagService {
     }
 
     public static synchronized SnagService getInstance() {
-        if(INSTANCE == null) {
+        if (INSTANCE == null) {
             INSTANCE = new SnagService();
         }
         return INSTANCE;
@@ -35,9 +35,14 @@ public class SnagService {
         snagAPI.getFilms(count).enqueue(new Callback<SnagResponse>() {
             @Override
             public void onResponse(Call<SnagResponse> call, Response<SnagResponse> response) {
-                if(response.isSuccessful()) {
-                    List<Film> films = response.body().getFilms().getFilm();
-                    callback.onFilmsReady(films);
+                if (response.isSuccessful()) {
+                    SnagResponse res = response.body();
+                    if (res != null) {
+                        List<Film> films = response.body().getFilms().getFilm();
+                        callback.onFilmsReady(films);
+                    } else {
+                        callback.onFilmsError("No films available");
+                    }
                 } else {
                     callback.onFilmsError(handleError(response.code()));
                 }
@@ -61,6 +66,7 @@ public class SnagService {
 
     public interface OnFilmsListener extends BaseAPIListener {
         void onFilmsReady(List<Film> films);
+
         void onFilmsError(String error);
     }
 }

@@ -1,7 +1,7 @@
 package com.example.snagapp.home;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -20,8 +20,10 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     private static final int COL_SPAN_COUNT = 3;
 
-    @BindView(R.id.filmRecycler) RecyclerView filmRecycler;
-    @BindView(R.id.progressBar) ProgressBar progressBar;
+    @BindView(R.id.filmRecycler)
+    RecyclerView filmRecycler;
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
 
     private HomePresenter homePresenter;
     private FilmsAdapter filmsAdapter;

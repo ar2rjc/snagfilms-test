@@ -9,7 +9,9 @@ public interface HomeContract {
 
     interface View {
         void showFilms(List<Film> films);
+
         void showError(String error);
+
         void showLoading(boolean isShowing);
     }
 

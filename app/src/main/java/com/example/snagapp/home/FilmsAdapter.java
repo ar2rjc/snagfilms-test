@@ -32,6 +32,7 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Film film = films.get(position);
         holder.fimName.setText(film.getTitle());
+        // TODO - Load placeholder in case there isn't an image available
         Picasso.get().load(film.getImages().getImage().get(0).getSrc()).into(holder.filmImage);
     }
 
@@ -47,8 +48,10 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> 
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.filmName) TextView fimName;
-        @BindView(R.id.filmImage) ImageView filmImage;
+        @BindView(R.id.filmName)
+        TextView fimName;
+        @BindView(R.id.filmImage)
+        ImageView filmImage;
 
         ViewHolder(View itemView) {
             super(itemView);
